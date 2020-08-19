@@ -31,7 +31,10 @@ jobs:
 
     # Runs a set of commands using the runners shell
     - name: Start download
-      run: "spotifydownload -playlist ${{ github.event.inputs.url }}"
+      run: | 
+        mkdir dl
+        cd dl/
+        spotifydownload -playlist ${{ github.event.inputs.url }}
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
